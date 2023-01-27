@@ -1,13 +1,19 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../images/Gplus.png"
 
 const Letter = () => {
 
+    const navigate = useNavigate(null);
+
+    useEffect(() => {
+        if (!localStorage.getItem('authToken'))
+            navigate('/');
+    })
+
     return (
         <div>
             <div className="text-xs md:text-base w-full md:w-3/4 md:mx-auto my-4 md:my-10 px-4 md:px-8 py-2 md:py-4 border-2">
-
-                <img src={logo} alt="unavailable" className="mx-auto w-32 h-12 mb-4 md:mb-10 md:w-40 md:h-16" />
-
                 <b><u>Sub: Invitation to Partner with G Plus Big Deals</u></b>
                 <br />
                 <br />
@@ -137,6 +143,7 @@ const Letter = () => {
                     </tbody>
                 </table>
             </div>
+            <button id="print-button" className="text-xs md:text-base ml-2 md:ml-44 w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={() => navigate('/v/fin')}>Next</button>
         </div>
     )
 }

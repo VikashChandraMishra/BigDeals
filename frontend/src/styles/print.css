@@ -1,0 +1,18 @@
+#header,
+.header-space,
+#footer,
+.footer-space {
+    height: 100px;
+}
+
+#header {
+    top: 4px;
+    position: fixed;
+    width: 130px;
+    height: 60px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+}
