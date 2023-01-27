@@ -78,8 +78,15 @@ exports.saveSignature = async (req, res) => {
     try {
 
         const {
-            signature
+            signature,
+            data
         } = req.body;
+
+        const {
+            name,
+            designation,
+            date
+        } = data;
 
         const shop = await Shop.findById(req.id);
 
@@ -91,6 +98,9 @@ exports.saveSignature = async (req, res) => {
         }
 
         shop.signature = signature;
+        shop.partnerName = name;
+        shop.partnerDesignation = designation;
+        shop.date = date;
         await shop.save();
 
         return res.status(200).json({

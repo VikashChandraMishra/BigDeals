@@ -74,7 +74,7 @@ const Register = () => {
     }
 
     return (
-        <div className="bg-blue-200">
+        <div className="bg-blue-200 px-10 md:px-0">
             <div className="py-8 flex flex-col justify-center md:px-40">
                 <Formik
                     initialValues={{
@@ -163,10 +163,10 @@ const Register = () => {
                     <Form className="w-full mx-auto rounded-lg bg-slate-50 p-8">
                         <h2 className='text-lg md:text-3xl font-bold text-center'>REGISTER SHOP</h2>
 
-                        <h2 className='md:ml-5 text-lg md:text-2xl underline font-bold'>Basic Information:-</h2>
+                        <h2 className='md:ml-5 text-base md:text-2xl underline font-bold'>Basic Information:-</h2>
 
-                        <div className="flex flex-row justify-around">
-                            <div className="w-1/2 md:px-4 flex flex-col">
+                        <div className="flex flex-col md:flex-row justify-around">
+                            <div className="w-full md:w-1/2 md:px-4 flex flex-col">
                                 <div className="flex flex-col text-gray-400 py-2">
                                     <TextInput
                                         label="Shop Category"
@@ -187,7 +187,7 @@ const Register = () => {
                                     />
                                 </div>
 
-                                <div className="flex flex-row justify-between">
+                                <div className="flex flex-col md:flex-row justify-between">
                                     <div className="flex flex-col text-gray-400 py-2">
                                         <TextInput
                                             label="Primary Mobile"
@@ -209,7 +209,7 @@ const Register = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex flex-row justify-between">
+                                <div className="flex flex-col md:flex-row justify-between">
                                     <div className="flex flex-col text-gray-400 py-2">
                                         <TextInput
                                             label="Opening Time"
@@ -243,7 +243,7 @@ const Register = () => {
                                 </div>
                             </div>
 
-                            <div className="w-1/2 md:px-4 flex flex-col">
+                            <div className="w-full md:w-1/2 md:px-4 flex flex-col">
 
                                 <div className="flex flex-col text-gray-400 py-2">
                                     <TextInput
@@ -276,7 +276,7 @@ const Register = () => {
                                     />
                                 </div>
 
-                                <div className="flex flex-row justify-start">
+                                <div className="flex flex-col md:flex-row justify-start">
                                     <div className="flex flex-col text-gray-400 py-2">
                                         <SelectInput
                                             label="Status"
@@ -305,10 +305,10 @@ const Register = () => {
                             />
                         </div>
 
-                        <h2 className='md:ml-5 text-lg md:text-2xl underline font-bold'>Address:-</h2>
+                        <h2 className='md:ml-5 text-base md:text-2xl underline font-bold'>Address:-</h2>
 
-                        <div className="flex flex-row justify-around">
-                            <div className="w-1/2 md:px-4 flex flex-col">
+                        <div className="flex flex-col md:flex-row justify-around">
+                            <div className="w-full md:w-1/2 md:px-4 flex flex-col">
                                 <div className="flex flex-col text-gray-400 py-2">
                                     <TextInput
                                         label="State"
@@ -364,7 +364,7 @@ const Register = () => {
                                 </div>
                             </div>
 
-                            <div className="w-1/2 md:px-4 flex flex-col">
+                            <div className="w-full md:w-1/2 md:px-4 flex flex-col">
 
                                 <div className="flex flex-col text-gray-400 py-2">
                                     <TextAreaInput
@@ -372,7 +372,6 @@ const Register = () => {
                                         id="address"
                                         name="address"
                                         type="text"
-                                        width='md:w-full'
                                     />
                                 </div>
 
@@ -399,7 +398,7 @@ const Register = () => {
                         </div>
 
                         <div className="text-center">
-                            <button className="w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" type="submit">Submit</button>
+                            <button className="text-xs md:text-base w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" type="submit">Submit</button>
                         </div>
 
                     </Form>

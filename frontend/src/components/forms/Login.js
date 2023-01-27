@@ -1,7 +1,7 @@
 import { Formik, Form } from "formik";
 import TextInput from './form-components/TextInput';
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -20,7 +20,7 @@ const Login = () => {
 
         alert(json.message);
 
-        if(json.success) {
+        if (json.success) {
             localStorage.setItem('authToken', json.authToken);
             navigate('/v/fin');
         }
@@ -79,6 +79,7 @@ const Login = () => {
                             <button className="w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" type="submit">Submit</button>
                         </div>
 
+                        <Link to="/v/tc" className="text-red-500 underline">Terms&Conditions*</Link>
                     </Form>
                 </Formik>
             </div>

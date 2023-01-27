@@ -1,49 +1,9 @@
-import { useEffect, useState } from "react";
 import logo from "../images/Gplus.png"
 
 const Letter = () => {
 
-    const [image, setImage] = useState({ src: '' });
-    const [ data, setData ] = useState({ "name": '', "designation": "", "date": "" });
-
-    useEffect(() => {
-
-        const fetchData = async () => {
-
-            const response = await fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/fetch-data/fetch-shop-data`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'authToken': localStorage.getItem('authToken')
-                }
-            })
-
-            const json = await response.json();
-
-            if (json.success) {
-                setImage({ src: json.shop.signature });
-                setData({
-                    name: json.shop.partnerName,
-                    designation: json.shop.partnerDesignation,
-                    date: json.shop.date
-                })
-            } else alert(json.message);
-        }
-
-        fetchData();
-
-    }, [])
-
-    const print = () => {
-        const printButton = document.getElementById('print-button');
-        printButton.style.display = 'none';
-        window.print();
-        printButton.style.display = 'initial';
-    }
-
     return (
         <div>
-            <button id="print-button" className="text-xs md:text-base ml-2 md:ml-44 w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={print}>Print</button>
             <div className="text-xs md:text-base w-full md:w-3/4 md:mx-auto my-4 md:my-10 px-4 md:px-8 py-2 md:py-4 border-2">
 
                 <img src={logo} alt="unavailable" className="mx-auto w-32 h-12 mb-4 md:mb-10 md:w-40 md:h-16" />
@@ -158,24 +118,21 @@ const Letter = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td className="border-2 md:py-2 md:px-2">Name: {data.name}</td>
-                            <td className="border-2 md:py-2 md:px-2">Name: Siddharth Bedi Varma</td>
+                            <td className="border-2 md:py-2 md:px-2">Name: </td>
+                            <td className="border-2 md:py-2 md:px-2">Name: </td>
                         </tr>
                         <tr>
-                            <td className="border-2 py-1 px-1 md:py-2 md:px-2">Signature:
-                                <img src={image.src} width="80px" height="40px" alt="signature appears here" />
-                            </td>
+                            <td className="border-2 py-1 px-1 md:py-2 md:px-2">Signature: </td>
                             <td className="flex flex-row md:py-2 md:px-2">Signature:
-                                <img src={image.src} width="80px" height="40px" alt="signature appears here" />
                             </td>
                         </tr>
                         <tr>
-                            <td className="border-2 md:py-2 md:px-2">Designation: {data.designation}</td>
-                            <td className="border-2 md:py-2 md:px-2">Designation: CEO</td>
+                            <td className="border-2 md:py-2 md:px-2">Designation: </td>
+                            <td className="border-2 md:py-2 md:px-2">Designation:</td>
                         </tr>
                         <tr>
-                            <td className="border-2 md:py-2 md:px-2">Date: {data.date}</td>
-                            <td className="border-2 md:py-2 md:px-2">Date: {data.date}</td>
+                            <td className="border-2 md:py-2 md:px-2">Date:</td>
+                            <td className="border-2 md:py-2 md:px-2">Date:</td>
                         </tr>
                     </tbody>
                 </table>

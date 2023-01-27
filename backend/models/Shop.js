@@ -24,6 +24,9 @@ const shopSchema = new Schema({
     pincode: {type: String},
     latitude: {type: String},
     longitude: {type: String},
+    partnerName: {type: String},
+    partnerDesignation: {type: String},
+    date: {type: String}
 })
 
 module.exports = mongoose.model('shop', shopSchema);

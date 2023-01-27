@@ -9,6 +9,8 @@ import Letter from './components/Letter';
 import Sign from './components/forms/Sign';
 import Login from './components/forms/Login';
 import Navbar from './components/Navbar';
+import Terms from './components/Terms';
+
 function App() {
   return (
     <div>
@@ -18,6 +20,7 @@ function App() {
           <Route exact path='/' element={<Login />} />
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/v/fin' element={<Sign />} />
+          <Route exact path='/v/tc' element={<Terms />} />
           <Route exact path='/v/pt/pdf' element={<Letter />} />
         </Routes>
       </Router>
