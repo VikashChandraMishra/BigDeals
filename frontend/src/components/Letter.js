@@ -38,7 +38,7 @@ const Letter = () => {
         }
 
         fetchData();
-
+        // eslint-disable-next-line
     }, [])
 
     // const print = () => {
@@ -257,7 +257,7 @@ const Letter = () => {
                     <tbody>
                         <tr>
                             <td>
-                                <p>To: {data.name}</p>
+                                <p>To: {data.name}, {data.designation}</p>
                                 <b><u>Sub: Invitation to Partner with G Plus Big Deals</u></b>
                                 <br />
                                 <br />
