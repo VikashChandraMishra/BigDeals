@@ -16,7 +16,7 @@ const Navbar = () => {
     useEffect(() => {
     }, [location])
 
-    if (location.pathname !== "/v/pt/pdf")
+    if (location.pathname !== "/v/pt/pdf" && location.pathname !== "/ad/pt/pdf")
         return (
             <nav className="shadow-md w-full" style={{backgroundColor: 'rgb(160,195,54)'}}>
                 <div className="max-w-7xl px-4">
@@ -37,7 +37,6 @@ const Navbar = () => {
                                 }
 
                             </div>
-                            <h2 className="md:text-3xl font-bold md:mt-2 mx-auto">APP PARTNER MEMORANDUM</h2>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="my-4 w-8 h-6 bg-slate-50 cursor-pointer md:hidden block" data-bs-toggle="collapse" data-bs-target="me" onClick={toggleNav}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

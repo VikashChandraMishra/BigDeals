@@ -22,11 +22,6 @@ app.use('/api/auth', require('./routes/auth.js'));
 app.use('/api/save-data', require('./routes/register.js'));
 app.use('/api/fetch-data', require('./routes/fetchData.js'));
 
-// app.use('/api/save-data', require('./routes/saveData.js'));
-// app.use('/api/fetch-stats', require('./routes/stats.js'));
-// app.use('/api/user', require('./routes/user.js'));
-// app.use('/api/eod', require('./routes/eod.js'));
-
 app.listen(port, () => {
     console.log(`API listening on port ${port}`);
 }); 

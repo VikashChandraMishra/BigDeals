@@ -22,7 +22,12 @@ const Login = () => {
 
         if (json.success) {
             localStorage.setItem('authToken', json.authToken);
-            navigate('/v/tc');
+            localStorage.setItem('user', json.user);
+
+            if (json.user === 'admin')
+                navigate('/ad/dsh');
+            else if (json.user === 'partner')
+                navigate('/v/tc');
         } else alert(json.message);
 
     }
@@ -31,6 +36,8 @@ const Login = () => {
     return (
         <div className="h-screen">
             <div className="py-8 flex flex-col justify-center md:px-40">
+                <h2 className="md:text-3xl font-bold text-center md:mb-4">APP PARTNER MEMORANDUM</h2>
+
                 <img src={logo} alt="unavailable" className="w-32 h-16 md:w-40 md:h-16 mx-auto mb-4 md:mb-8" />
                 <Formik
                     initialValues={{

@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
 const Shop = require("../models/Shop.js");
 const {
-    SECRET_KEY
+    SECRET_KEY,
+    ADMIN_EMAIL,
+    ADMIN_PASSWORD
 } = process.env;
 
 exports.login = async (req, res) => {
@@ -11,6 +13,18 @@ exports.login = async (req, res) => {
             email,
             password
         } = req.body;
+
+        if(email == ADMIN_EMAIL && password == ADMIN_PASSWORD) {
+        
+            const authToken = jwt.sign(ADMIN_EMAIL, SECRET_KEY);
+            
+            return res.status(200).json({
+                success: true,
+                user: 'admin',
+                authToken: authToken,
+                message: "successfully logged in"
+            });    
+        }
 
         const existingShop = await Shop.findOne({email: email, password: password});
 
@@ -26,6 +40,7 @@ exports.login = async (req, res) => {
         
         return res.status(200).json({
             success: true,
+            user: 'partner',
             authToken: authToken,
             message: "successfully logged in"
         });
