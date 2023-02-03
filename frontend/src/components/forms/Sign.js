@@ -37,6 +37,7 @@ const Sign = () => {
 
         alert(json.message);
         setData({ "name": '', "designation": "", "date": "" });
+        navigate('/v/pt/pdf');
     }
 
     return (
