@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../images/Gplus.png"
 import '../styles/print.css';
-import signature from '../images/signature.png';
+import signature from '../images/CEOsign.png';
 
 const Letter = () => {
 
