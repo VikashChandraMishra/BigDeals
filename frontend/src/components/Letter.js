@@ -369,7 +369,7 @@ const Letter = () => {
                                     <tbody>
                                         <tr>
                                             <td className="border-2 md:py-2 md:px-2">Name: {data.name}</td>
-                                            <td className="border-2 md:py-2 md:px-2">Name: Siddharth Bedi Varma</td>
+                                            <td className="border-2 md:py-2 md:px-2">Name: Sidharth Bedi Varma</td>
                                         </tr>
                                         <tr>
                                             <td className="border-2 py-1 px-1 md:py-2 md:px-2">Signature:
@@ -381,7 +381,7 @@ const Letter = () => {
                                         </tr>
                                         <tr>
                                             <td className="border-2 md:py-2 md:px-2">Designation: {data.designation}</td>
-                                            <td className="border-2 md:py-2 md:px-2">Designation: CEO</td>
+                                            <td className="border-2 md:py-2 md:px-2">Designation: Chief Executive Officer</td>
                                         </tr>
                                         <tr>
                                             <td className="border-2 md:py-2 md:px-2">Date: {data.date}</td>
