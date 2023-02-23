@@ -3,6 +3,7 @@ const router = express.Router();
 const incomingDataController = require('../controllers/incomingDataController.js');
 const {
     register,
+    saveShopData,
     saveSignature
 } = incomingDataController;
 const multer = require('multer');
@@ -23,7 +24,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 const pUpload = upload.fields([{ name: 'image', maxCount: 1 }]);
 
-router.post('/register-shop', pUpload, register);
+router.post('/register-shop', register);
+
+router.post('/save-shop-data', fetchShop, pUpload, saveShopData);
 
 router.post('/register-signature', fetchShop, pUpload, saveSignature);
 

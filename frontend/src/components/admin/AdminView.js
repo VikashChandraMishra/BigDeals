@@ -67,7 +67,9 @@ const Letter = () => {
     // }
 
     const printResponsive = () => {
+        document.getElementById('print-button').classList.toggle('hidden');
         window.print();
+        document.getElementById('print-button').classList.toggle('hidden');
     }
 
     //     return (

@@ -65,7 +65,9 @@ const Letter = () => {
     // }
 
     const printResponsive = () => {
+        document.getElementById('print-button').classList.toggle('hidden');
         window.print();
+        document.getElementById('print-button').classList.toggle('hidden');
     }
 
     //     return (
@@ -257,7 +259,8 @@ const Letter = () => {
                     <tbody>
                         <tr>
                             <td>
-                                <p>To: {data.name}, {data.designation}</p>
+                                <p>To:</p>
+                                {/* <p>To: {data.name}, {data.designation}</p> */}
                                 <b><u>Sub: Invitation to Partner with G Plus Big Deals</u></b>
                                 <br />
                                 <br />
@@ -313,6 +316,11 @@ const Letter = () => {
                                 <span>Chief Executive Officer</span><br />
                                 <span>G Plus </span><br />
                                 <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+
                                 <h3 className="text-center font-bold">Terms and Conditions</h3>
                                 <br />
 

@@ -18,7 +18,7 @@ const Navbar = () => {
 
     if (location.pathname !== "/v/pt/pdf" && location.pathname !== "/ad/pt/pdf")
         return (
-            <nav className="shadow-md w-full" style={{backgroundColor: 'rgb(160,195,54)'}}>
+            <nav className="shadow-md w-full" style={{ backgroundColor: 'rgb(160,195,54)' }}>
                 <div className="max-w-7xl px-4">
                     <div className="flex justify-between md:justify-start">
                         <div className="flex flex-col md:flex-row justify-between w-full">
@@ -29,6 +29,14 @@ const Navbar = () => {
                                 {
                                     <Link to="/register" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300"
                                     >Register</Link>
+                                }
+                                {
+                                    localStorage.getItem('authToken') &&
+                                    <Link to="/v/tc" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300">Terms</Link>
+                                }
+                                {
+                                    localStorage.getItem('authToken') &&
+                                    <Link to="/ed/pr" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300">Shop</Link>
                                 }
                                 {
                                     localStorage.getItem('authToken') &&

@@ -4,26 +4,10 @@ exports.register = async (req, res) => {
     try {
 
         const {
-            category,
-            shopName,
             personName,
             primaryMobile,
-            alternateMobile,
             email,
-            openingTime,
-            closingTime,
-            coupon,
-            status,
             password,
-            services,
-            state,
-            address,
-            district,
-            city,
-            locality,
-            pincode,
-            latitude,
-            longitude
         } = req.body;
 
         const existingShop = await Shop.findOne({
@@ -39,32 +23,15 @@ exports.register = async (req, res) => {
         }
 
         await Shop.create({
-            category: category,
-            shopName: shopName,
             personName: personName,
             primaryMobile: primaryMobile,
-            alternateMobile: alternateMobile,
             email: email,
-            openingTime: openingTime,
-            closingTime: closingTime,
-            coupon: coupon,
-            status: status,
             password: password,
-            imagePath: 'uploads/' + req.files['image'][0].filename,
-            services: services,
-            state: state,
-            address: address,
-            district: district,
-            city: city,
-            locality: locality,
-            pincode: pincode,
-            latitude: latitude,
-            longitude: longitude
         });
 
         return res.json({
             success: true,
-            message: "shop successfully registered"
+            message: "successfully registered"
         });
 
     } catch (error) {
@@ -73,6 +40,58 @@ exports.register = async (req, res) => {
     }
 }
 
+exports.saveShopData = async (req, res) => {
+    try {
+        const {
+            category,
+            shopName,
+            openingTime,
+            closingTime,
+            coupon,
+            status,
+            services,
+            state,
+            address,
+            district,
+            city,
+            locality,
+            pincode,
+            latitude,
+            longitude
+        } = req.body;
+
+
+        const shop = await Shop.findById(req.id);
+
+        shop.category = category;
+        shop.shopName = shopName;
+        shop.openingTime = openingTime;
+        shop.closingTime = closingTime;
+        shop.coupon = coupon;
+        shop.status = status;
+        shop.imagePath = 'uploads/' + req.files['image'][0].filename;
+        shop.services = services;
+        shop.state = state;
+        shop.address = address;
+        shop.district = district;
+        shop.city = city;
+        shop.locality = locality;
+        shop.pincode = pincode;
+        shop.latitude = latitude;
+        shop.longitude = longitude;
+
+        await shop.save();
+
+        return res.json({
+            success: true,
+            message: "shop details successfully saved"
+        });
+
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).send("Internal Server Error!");
+    }
+}
 
 exports.saveSignature = async (req, res) => {
     try {

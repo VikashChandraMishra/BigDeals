@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const shopSchema = new Schema({
-    category: { type: String, required: true },
-    shopName: { type: String, required: true },
-    personName: { type: String, required: true },
-    primaryMobile: { type: Number, required: true, unique: true },
-    alternateMobile: { type: Number, required: true },
-    email: { type: String, required: true, unique: true },
+    category: { type: String },
+    shopName: { type: String },
+    personName: { type: String },
+    primaryMobile: { type: Number, unique: true },
+    alternateMobile: { type: Number },
+    email: { type: String, unique: true },
     openingTime: { type: String },
     closingTime: { type: String },
     coupon: { type: String },

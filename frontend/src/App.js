@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import Terms from './components/Terms';
 import Dashboard from './components/admin/Dashboard';
 import AdminView from './components/admin/AdminView';
+import EditProfile from './components/forms/EditProfile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Login />} />
           <Route exact path='/register' element={<Register />} />
+          <Route exact path='/ed/pr' element={<EditProfile />} />
           <Route exact path='/v/fin' element={<Sign />} />
           <Route exact path='/v/tc' element={<Terms />} />
           <Route exact path='/v/pt/pdf' element={<Letter />} />
