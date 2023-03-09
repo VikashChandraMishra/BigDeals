@@ -50,10 +50,12 @@ const Dashboard = () => {
                 <table className="w-full text-xs md:text-base mt-2 md:mt-6 border-2">
                     <thead className="text-xs md:text-base text-green-600 uppercase bg-gray-900">
                         <tr>
-                            <th className="px-6 py-3">Application ID</th>
-                            <th className="px-6 py-3">Applicant</th>
-                            <th className="px-6 py-3">Status</th>
-                            <th className="px-6 py-3">Documents Uploaded</th>
+                            <th className="px-6 py-3">ID</th>
+                            <th className="px-6 py-3">Shop Category</th>
+                            <th className="px-6 py-3">Shop Name</th>
+                            <th className="px-6 py-3">Contact Person Name</th>
+                            <th className="px-6 py-3">Signature Uploaded</th>
+                            <th className="px-6 py-3">Action</th>
                         </tr>
                     </thead>
                     <tbody>

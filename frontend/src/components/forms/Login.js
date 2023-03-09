@@ -19,7 +19,6 @@ const Login = () => {
 
         const json = await response.json();
 
-
         if (json.success) {
             localStorage.setItem('authToken', json.authToken);
             localStorage.setItem('user', json.user);
@@ -31,7 +30,6 @@ const Login = () => {
         } else alert(json.message);
 
     }
-
 
     return (
         <div className="h-screen">

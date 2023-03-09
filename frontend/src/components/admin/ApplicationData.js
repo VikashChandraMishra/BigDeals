@@ -5,11 +5,28 @@ const ApplicationData = (props) => {
     const navigate = useNavigate(null);
 
     const { shop } = props;
-    const { _id, category, shopName, personName } = shop;
+    const { _id, category, shopName, personName, signature } = shop;
 
 
     const handleClick = (e) => {
-        navigate('/ad/pt/pdf', {state: {_id: e.target.innerText}});
+        navigate('/ad/pt/pdf', {state: {_id: _id}});
+    }
+
+    const deleteShop = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/save-data/delete-shop-data`, {
+            method: 'DELETE',
+            headers: {
+                _id: _id
+            }
+        })
+
+        const json = await response.json();
+        if(json.success) {
+            alert("Shop data cleared successfully!");
+        } else {
+            alert("Operation failed!");
+        }
     }
 
     return (
@@ -18,6 +35,8 @@ const ApplicationData = (props) => {
             <td>{category}</td>
             <td>{shopName}</td>
             <td>{personName}</td>
+            <td>{signature ? 'Yes':'No'}</td>
+            <td><button className="mr-2 text-xs md:text-base w-20 md:w-32 my-5 py-2 bg-red-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={deleteShop} >Delete</button></td>
         </tr>
     )
 }

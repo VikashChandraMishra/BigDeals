@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import logo from "../../images/Gplus.png"
-import '../../styles/print.css';
-import signature from '../../images/signature.png';
+import { useNavigate } from "react-router-dom";
+import logo from "../images/Gplus.png"
+import '../styles/print.css';
+import signature from '../images/CEOsign.png';
 
-const Letter = () => {
+const MOU = () => {
 
     const [image, setImage] = useState({ src: '' });
     const [data, setData] = useState({ "name": '', "designation": "", "date": "" });
     const navigate = useNavigate(null);
-    const location = useLocation();
+
     const [content, setContent] = useState("");
 
-    const fetchShopDataForAdmin = async () => {
-        const response = await fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/fetch-data/fetch-shop-data-for-admin`, {
+    const fetchShopData = async () => {
+        const response = await fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/fetch-data/fetch-shop-data`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                '_id': location.state._id
+                'authToken': localStorage.getItem('authToken')
             }
         })
 
@@ -80,13 +80,12 @@ const Letter = () => {
     }
 
     useEffect(() => {
-
-        if (localStorage.getItem('user') !== 'admin')
+        if (!localStorage.getItem('authToken'))
             navigate('/');
 
-        fetchShopDataForAdmin();
         fetchData();
-        // eslint-disable-next-line
+        fetchShopData();
+        //eslint-disable-next-line
     }, [])
 
     const printResponsive = () => {
@@ -94,7 +93,7 @@ const Letter = () => {
         window.print();
         document.getElementById('print-button').classList.toggle('hidden');
     }
-
+    
     return (
         <div>
             <button id="print-button" className="text-xs md:text-base ml-2 md:ml-44 w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={printResponsive}>Print</button>
@@ -198,4 +197,4 @@ const Letter = () => {
     )
 }
 
-export default Letter;
+export default MOU;

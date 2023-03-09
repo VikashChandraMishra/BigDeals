@@ -5,6 +5,7 @@ const Navbar = () => {
 
     const logout = () => {
         localStorage.removeItem('authToken');
+        localStorage.removeItem('user');
     }
 
     const location = useLocation();
@@ -25,21 +26,31 @@ const Navbar = () => {
                             <div className="flex flex-col md:flex-row items-start md:items-center md:space-x-1" id="menu">
 
                                 <Link to="/" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300">Home</Link>
-
                                 {
+                                    localStorage.getItem('authToken') && localStorage.getItem('user') === 'admin' &&
+                                    <Link to="/ad/dsh/" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300"
+                                    >Dashboard</Link>
+                                }
+                                {
+                                    localStorage.getItem('authToken') && localStorage.getItem('user') === 'admin' &&
+                                    <Link to="/ed/mou" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300"
+                                    >EditMOU</Link>
+                                }
+                                {
+                                    localStorage.getItem('user') !== 'admin' &&
                                     <Link to="/register" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300"
                                     >Register</Link>
                                 }
                                 {
-                                    localStorage.getItem('authToken') &&
+                                    localStorage.getItem('authToken') && localStorage.getItem('user') === 'partner' &&
                                     <Link to="/v/tc" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300">Terms</Link>
                                 }
                                 {
-                                    localStorage.getItem('authToken') &&
+                                    localStorage.getItem('authToken') && localStorage.getItem('user') === 'partner' &&
                                     <Link to="/ed/pr" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300">Shop</Link>
                                 }
                                 {
-                                    localStorage.getItem('authToken') &&
+                                    localStorage.getItem('authToken') && 
                                     <Link to="/" className="text-xs md:text-lg px-2 py-4 font-semibold hover:text-red-500 transition duration-300" onClick={logout}
                                     >Log Out</Link>
                                 }

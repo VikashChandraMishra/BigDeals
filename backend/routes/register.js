@@ -4,7 +4,10 @@ const incomingDataController = require('../controllers/incomingDataController.js
 const {
     register,
     saveShopData,
-    saveSignature
+    saveSignature,
+    saveMOU,
+    deleteMOU,
+    deleteShopData
 } = incomingDataController;
 const multer = require('multer');
 const fs = require('fs');
@@ -26,8 +29,14 @@ const pUpload = upload.fields([{ name: 'image', maxCount: 1 }]);
 
 router.post('/register-shop', register);
 
+router.post('/save-mou', saveMOU);
+
 router.post('/save-shop-data', fetchShop, pUpload, saveShopData);
 
 router.post('/register-signature', fetchShop, pUpload, saveSignature);
+
+router.delete('/delete-mou', deleteMOU);
+
+router.delete('/delete-shop-data', deleteShopData);
 
 module.exports = router;

@@ -77,7 +77,7 @@ const Register = () => {
     }
 
     return (
-        <div className="px-10 md:px-0">
+        <div className="px-4 md:px-0">
             <div className="py-8 flex flex-col justify-center md:px-40">
                 <Formik
                     initialValues={{

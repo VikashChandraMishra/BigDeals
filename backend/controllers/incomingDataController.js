@@ -1,3 +1,4 @@
+const MOU = require("../models/MOU");
 const Shop = require("../models/Shop");
 
 exports.register = async (req, res) => {
@@ -132,3 +133,90 @@ exports.saveSignature = async (req, res) => {
         return res.status(500).send("Internal Server Error");
     }
 }
+
+exports.saveMOU = async (req, res) => {
+    try {
+        const {
+            text,
+            boldWord,
+            underlinedWord
+        } = req.body;
+
+        const existingMOUs = await MOU.find();
+
+        if(existingMOUs.length == 0) {
+            let textArray = [];
+            let boldWordsArray = [];
+            let underlinedWordsArray = [];
+
+            textArray.push(text);
+            boldWordsArray.push(boldWord);
+            underlinedWordsArray.push(underlinedWord);
+
+            const mou = await MOU.create({
+                text: textArray,
+                boldWords: boldWordsArray,
+                underlinedWords: underlinedWordsArray
+            });
+
+            return res.json({
+                success: true,
+                message: "mou saved successfully",
+                mou: mou
+            });
+        } 
+
+        const mou = await MOU.findOne();
+
+        mou.text.push(text);
+        mou.boldWords.push(boldWord);
+        mou.underlinedWords.push(underlinedWord);
+        await mou.save();
+
+        return res.json({
+            success: true,
+            message: "mou edited successfully",
+            mou: mou
+        });
+
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).send("Internal Server Error!");
+    }
+}
+
+exports.deleteMOU = async (req, res) => {
+    try{
+        await MOU.deleteOne();
+        return res.json({success: true, message: "mou deleted successfully"});
+    } catch(error) {
+        
+    }
+}
+
+exports.deleteShopData = async (req, res) => {
+    try{
+        await Shop.findByIdAndDelete(req.header('_id'));
+        return res.json({success: true, message: "shop data deleted successfully"});
+    } catch(error) {
+        
+    }
+}
+
+// exports.setMOU = async (req, res) => {
+//     try {
+//         await MOU.updateMany({}, { selected: false });
+        
+//         const mou = MOU.findOne({_id: req.header('_id')});
+//         mou.selected = true;
+
+//         return res.json({
+//             success: true,
+//             message: "mou set successfully"
+//         });
+
+//     } catch (error) {
+//         console.error(error.message);
+//         return res.status(500).send("Internal Server Error!");
+//     }
+// }
