@@ -51,17 +51,17 @@ const Dashboard = () => {
                     <thead className="text-xs md:text-base text-green-600 uppercase bg-gray-900">
                         <tr>
                             <th className="px-6 py-3">ID</th>
-                            <th className="px-6 py-3">Shop Category</th>
-                            <th className="px-6 py-3">Shop Name</th>
-                            <th className="px-6 py-3">Contact Person Name</th>
-                            <th className="px-6 py-3">Signature Uploaded</th>
-                            <th className="px-6 py-3">Action</th>
+                            <th className="px-6 py-3">Category</th>
+                            <th className="px-6 py-3">Partner</th>
+                            <th className="px-6 py-3">Contact Person</th>
+                            <th className="px-6 py-3">Signature</th>
+                            <th className="px-6 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             shops.map((shop) => {
-                                return <ApplicationData key={shop._id} shop={shop} />
+                                return <ApplicationData key={shop._id} id={shops.indexOf(shop)} shop={shop} />
                             })
                         }
                     </tbody>

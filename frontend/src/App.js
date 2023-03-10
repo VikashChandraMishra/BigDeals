@@ -14,6 +14,7 @@ import AdminView from './components/admin/AdminView';
 import EditProfile from './components/forms/EditProfile';
 import EditMOU from './components/forms/EditMOU';
 import MOU from './components/MOU';
+import EditShopFromAdmin from './components/forms/EditShopFromAdmin';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path='/ad/pt/pdf' element={<AdminView />} />
           <Route exact path='/ad/dsh/' element={<Dashboard />} />
           <Route exact path='/v/pt/pdf' element={<MOU />} />
+          <Route exact path='/ad/ed/sh' element={<EditShopFromAdmin />} />
         </Routes>
       </Router>
     </div>

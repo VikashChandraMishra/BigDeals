@@ -1,14 +1,15 @@
-import { Formik, Form } from "formik";
 import TextInput from './form-components/TextInput';
+import { useLocation, useNavigate } from "react-router-dom";
+import { Formik, Form } from "formik";
 import * as Yup from 'yup';
 import SelectInput from "./form-components/SelectInput";
-import { useNavigate } from "react-router-dom";
 import TextAreaInput from "./form-components/TextAreaInput";
 import { useEffect, useState } from "react";
 
-const EditProfile = () => {
+const EditShop = () => {
 
     const navigate = useNavigate(null);
+    const location = useLocation(null);
     const [image, setImage] = useState('');
 
     useEffect(() => {
@@ -27,6 +28,10 @@ const EditProfile = () => {
         formData.append('image', image);
         formData.append('category', values.category);
         formData.append('shopName', values.shopName);
+        formData.append('personName', values.personName);
+        formData.append('primaryMobile', values.primaryMobile);
+        formData.append('email', values.email);
+        formData.append('password', values.password);
         formData.append('openingTime', values.openingTime);
         formData.append('closingTime', values.closingTime);
         formData.append('coupon', values.coupon);
@@ -41,21 +46,22 @@ const EditProfile = () => {
         formData.append('latitude', values.latitude);
         formData.append('longitude', values.longitude);
 
-
-        const response = await fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/save-data/save-shop-data`, {
+        const response = await fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/save-data/edit-shop-data`, {
             method: 'POST',
             headers: {
-                'authToken': localStorage.getItem('authToken'),
+                _id: location.state._id,
             },
             body: formData
         })
 
         const json = await response.json();
 
-        alert(json.message);
-
         if (json.success) {
-            navigate('/ed/pr');
+            alert("Shop data updated successfully!");
+            navigate('/ad/dsh');
+        } else {
+            alert("Operation failed!");
+            navigate('/ad/dsh');
         }
     }
 
@@ -77,12 +83,16 @@ const EditProfile = () => {
     }
 
     return (
-        <div className="px-4 md:px-0">
+        <div className="h-screen">
             <div className="py-8 flex flex-col justify-center md:px-40">
                 <Formik
                     initialValues={{
                         category: '',
                         shopName: '',
+                        personName: '',
+                        primaryMobile: 0,
+                        email: '',
+                        password: '',
                         openingTime: '',
                         closingTime: '',
                         coupon: 'No',
@@ -98,38 +108,26 @@ const EditProfile = () => {
                         longitude: ''
                     }}
                     validationSchema={Yup.object({
-                        category: Yup.string()
-                            // .max(15, 'Must be 15 characters or less')
-                            .required('Required'),
-                        shopName: Yup.string()
-                            .min(3, 'Must be 3 characters or more')
-                            .required('Required'),
-                        openingTime: Yup.string()
-                            .required('Required'),
+                        category: Yup.string(),
+                        shopName: Yup.string(),
+                        personName: Yup.string(),
+                        primaryMobile: Yup.number(),
+                        email: Yup.string()
+                            .email('Invalid Email'),
+                        password: Yup.string(),
+                        openingTime: Yup.string(),
                         closingTime: Yup.string()
-                            .required('Required'),
-                        coupon: Yup.string()
-                            .required('Required'),
-                        status: Yup.string()
-                            .required('Required'),
-                        services: Yup.string()
-                            .required('Required'),
-                        state: Yup.string()
-                            .required('Required'),
-                        address: Yup.string()
-                            .required('Required'),
-                        district: Yup.string()
-                            .required('Required'),
-                        city: Yup.string()
-                            .required('Required'),
-                        locality: Yup.string()
-                            .required('Required'),
-                        pincode: Yup.string()
-                            .required('Required'),
-                        latitude: Yup.string()
-                            .required('Required'),
-                        longitude: Yup.string()
-                            .required('Required'),
+                        , coupon: Yup.string()
+                        , status: Yup.string()
+                        , services: Yup.string()
+                        , state: Yup.string()
+                        , address: Yup.string()
+                        , district: Yup.string()
+                        , city: Yup.string()
+                        , locality: Yup.string()
+                        , pincode: Yup.string()
+                        , latitude: Yup.string()
+                        , longitude: Yup.string()
                     })}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                         handleSubmit(values)
@@ -140,7 +138,7 @@ const EditProfile = () => {
                     }}
                 >
                     <Form className="w-full mx-auto rounded-lg bg-gray-700 p-8">
-                        <h2 className='text-lg md:text-3xl font-bold text-center text-white'>ENTER SHOP DETAILS</h2>
+                        <h2 className='text-lg md:text-3xl font-bold text-center text-white'>EDIT SHOP DETAILS</h2>
 
                         <h2 className='md:ml-5 text-base md:text-2xl underline font-bold text-white'>Basic Information:-</h2>
 
@@ -219,6 +217,46 @@ const EditProfile = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="w-full md:px-4 flex flex-col text-gray-400 py-2">
+                            <TextInput
+                                label="Contact Person"
+                                id="personName"
+                                name="personName"
+                                type="text"
+                                width='md:w-full'
+                            />
+                        </div>
+
+                        <div className="w-full md:px-4 flex flex-col text-gray-400 py-2">
+                            <TextInput
+                                label="Email"
+                                id="email"
+                                name="email"
+                                type="email"
+                                width='md:w-full'
+                            />
+                        </div>
+
+                        <div className="w-full md:px-4 flex flex-col text-gray-400 py-2">
+                            <TextInput
+                                label="Mobile"
+                                id="primaryMobile"
+                                name="primaryMobile"
+                                type="number"
+                                width='md:w-full'
+                            />
+                        </div>
+
+                        <div className="w-full md:px-4 flex flex-col text-gray-400 py-2">
+                            <TextInput
+                                label="Password"
+                                id="password"
+                                name="password"
+                                type="password"
+                                width='md:w-full'
+                            />
                         </div>
 
                         <div className="w-full md:px-4 flex flex-col text-gray-400 py-2">
@@ -330,8 +368,8 @@ const EditProfile = () => {
                     </Form>
                 </Formik>
             </div>
-        </div>
+        </div >
     )
 }
 
-export default EditProfile;
+export default EditShop;

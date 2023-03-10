@@ -205,6 +205,131 @@ exports.deleteShopData = async (req, res) => {
     }
 }
 
+exports.editShopData = async (req, res) => {
+    try{
+        const {
+            category,
+            shopName,
+            personName,
+            primaryMobile,
+            email,
+            password,
+            openingTime,
+            closingTime,
+            coupon,
+            status,
+            services,
+            state,
+            address,
+            district,
+            city,
+            locality,
+            pincode,
+            latitude,
+            longitude
+        } = req.body;
+
+        let shop = await Shop.findById(req.header('_id'));
+
+        if(!shop) {
+        return res.json({
+            success: false,
+            message: "partner does not exist"
+        });
+
+        }
+
+        if(category) {
+            shop.category = category;
+        }
+
+        if(shopName) {
+            shop.shopName = shopName;
+        }
+        
+        if(personName) {
+            shop.personName = personName;
+        }
+        
+        if(primaryMobile) {
+            shop.primaryMobile = primaryMobile;
+        }
+        
+        if(email) {
+            shop.email = email;
+        }
+
+        if(password) {
+            shop.password = password;
+        }
+        
+        if(openingTime) {
+            shop.openingTime = openingTime;
+        }
+        
+        if(closingTime) {
+            shop.closingTime = closingTime;
+        }
+        
+        if(coupon) {
+            shop.coupon = coupon;
+        }
+        
+        if(status) {
+            shop.status = status;
+        }
+        
+        if(services) {
+            shop.services = services;
+        }
+        
+        if(state) {
+            shop.state = state;
+        }
+        
+        if(address) {
+            shop.address = address;
+        }
+        
+        if(district) {
+            shop.district = district;
+        }
+
+        if(city) {
+            shop.city = city;
+        }
+
+        if(locality) {
+            shop.locality = locality;
+        }
+
+        if(pincode) {
+            shop.pincode = pincode;
+        }
+
+        if(latitude) {
+            shop.latitude = latitude;
+        }
+
+        if(longitude) {
+            shop.longitude = longitude;
+        }
+        
+        if(req.files['image']){
+            shop.imagePath = 'uploads/' + req.files['image'][0].filename;
+        }
+
+        shop = await shop.save();
+
+        return res.json({
+            success: true,
+            message: "shop data updated successfully"
+        });
+    } catch(error) {
+        console.error(error.message);
+        return res.status(500).send("Internal Server Error!");
+    }
+}
 // exports.setMOU = async (req, res) => {
 //     try {
 //         await MOU.updateMany({}, { selected: false });

@@ -7,7 +7,8 @@ const {
     saveSignature,
     saveMOU,
     deleteMOU,
-    deleteShopData
+    deleteShopData,
+    editShopData
 } = incomingDataController;
 const multer = require('multer');
 const fs = require('fs');
@@ -38,5 +39,7 @@ router.post('/register-signature', fetchShop, pUpload, saveSignature);
 router.delete('/delete-mou', deleteMOU);
 
 router.delete('/delete-shop-data', deleteShopData);
+
+router.post('/edit-shop-data', pUpload, editShopData);
 
 module.exports = router;

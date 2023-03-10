@@ -2,7 +2,6 @@ import { Formik, Form } from "formik";
 import TextInput from './form-components/TextInput';
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
-import logo from "../../images/Gplus.png"
 
 const Login = () => {
 
@@ -36,7 +35,6 @@ const Login = () => {
             <div className="py-8 flex flex-col justify-center md:px-40">
                 <h2 className="md:text-3xl font-bold text-center md:mb-4">APP PARTNER MEMORANDUM</h2>
 
-                <img src={logo} alt="unavailable" className="w-32 h-16 md:w-40 md:h-16 mx-auto mb-4 md:mb-8" />
                 <Formik
                     initialValues={{
                         email: '',

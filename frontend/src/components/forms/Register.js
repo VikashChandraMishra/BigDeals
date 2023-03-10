@@ -76,10 +76,10 @@ const Register = () => {
 
                                 <div className="flex flex-col text-gray-400 py-2">
                                     <TextInput
-                                        label="Primary Mobile"
-                                        id="primaryMobile"
-                                        name="primaryMobile"
-                                        type="number"
+                                        label="Email"
+                                        id="email"
+                                        name="email"
+                                        type="email"
                                         width='md:w-full'
                                     />
                                 </div>
@@ -88,14 +88,13 @@ const Register = () => {
                             <div className="w-full md:w-1/2 md:px-4 flex flex-col">
                                 <div className="flex flex-col text-gray-400 py-2">
                                     <TextInput
-                                        label="Email"
-                                        id="email"
-                                        name="email"
-                                        type="email"
+                                        label="Mobile"
+                                        id="primaryMobile"
+                                        name="primaryMobile"
+                                        type="number"
                                         width='md:w-full'
                                     />
                                 </div>
-
 
                                 <div className="flex flex-col text-gray-400 py-2">
                                     <TextInput
