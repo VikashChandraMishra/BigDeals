@@ -190,7 +190,8 @@ exports.deleteMOU = async (req, res) => {
         await MOU.deleteOne();
         return res.json({success: true, message: "mou deleted successfully"});
     } catch(error) {
-        
+        console.error(error.message);
+        return res.status(500).send("Internal Server Error!");
     }
 }
 
@@ -199,7 +200,8 @@ exports.deleteShopData = async (req, res) => {
         await Shop.findByIdAndDelete(req.header('_id'));
         return res.json({success: true, message: "shop data deleted successfully"});
     } catch(error) {
-        
+        console.error(error.message);
+        return res.status(500).send("Internal Server Error!");
     }
 }
 

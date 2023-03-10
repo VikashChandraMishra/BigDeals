@@ -5,7 +5,6 @@ const EditMOU = () => {
 
     const navigate = useNavigate(null);
     const [content, setContent] = useState("");
-    const [originalContent, setOriginalContent] = useState("");
     const [mou, setMOU] = useState({ text: "", boldWord: "", underlinedWord: "" });
 
     const fetchData = async () => {
@@ -19,7 +18,6 @@ const EditMOU = () => {
 
         const json = await response.json();
         if (json.success) {
-            setOriginalContent(json.mou.text);
             let totalContent = "";
 
             for (let i = 0; i < json.mou.text.length; i++) {
@@ -74,24 +72,25 @@ const EditMOU = () => {
 
         if (json.success) {
             setMOU({ text: "", boldWord: "", underlinedWord: "" });
+            alert("data saved successfully")
             fetchData();
         } else alert(json.message);
 
     }
 
-    const fetchOriginalContent = (e) => {
-        e.preventDefault();
-        setMOU({ ...mou, text: originalContent });
-    }
-
     const deleteContent = async (e) => {
         e.preventDefault();
+
+        const confirmation = window.prompt("Warning! Proceeding with this action will delete all existing content of the MOU and you will have to rewrite it manually. Type 'yes' to proceed and 'no' to return.");
+
+        if (!(confirmation.toUpperCase() === "YES")) return;
+
         const response = await fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/save-data/delete-mou`, {
             method: 'DELETE'
         })
 
         const json = await response.json();
-        if(json.success) {
+        if (json.success) {
             setMOU({ text: "", boldWord: "", underlinedWord: "" });
             setContent("");
             alert("MOU data cleared successfully!");
@@ -129,10 +128,10 @@ const EditMOU = () => {
                         <input name="underlinedWord" id="underlinedWord" value={mou.underlinedWord} onChange={onChange}></input>
                     </div>
 
-                    <div className="flex flex-row justify-between">
+                    <div className="flex flex-col md:flex-row items-center md:justify-between">
                         <button className="text-xs md:text-base w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" type="submit">Save</button>
                         <button className="text-xs md:text-base w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={deleteContent}>Delete Current MOU</button>
-                        <button className="text-xs md:text-base w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={fetchOriginalContent} >Fetch Current MOU</button>
+                        <button className="text-xs md:text-base w-28 md:w-44 my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={() => { navigate('/v/pt/pdf') }} >Preview with Letter Head</button>
                     </div>
                 </form>
             </div>
