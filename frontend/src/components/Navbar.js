@@ -20,11 +20,11 @@ const Navbar = () => {
 
     if (location.pathname !== "/v/pt/pdf" && location.pathname !== "/ad/pt/pdf")
         return (
-            <nav className="shadow-md w-full" style={{ backgroundColor: 'rgb(160,195,54)' }}>
-                <div className="max-w-7xl px-4">
+            <nav className="w-full" style={{ backgroundColor: 'rgb(160,195,54)' }}>
+                <div className="max-w-8xl px-4">
                     <div className="flex justify-between md:justify-start">
                         <div className="flex flex-col md:flex-row justify-between w-full">
-                            <img src={logo} alt="unavailable" className="w-32 h-12 md:w-40 md:h-16 mt-1 md:mb-1 md:pr-2" />
+                            <img src={logo} alt="unavailable" className="w-24 h-8 md:w-32 md:h-12 mt-1 md:mb-1 md:pr-2" />
 
                             <div className="flex flex-col md:flex-row items-start md:items-center md:space-x-1" id="menu">
 

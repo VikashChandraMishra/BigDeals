@@ -61,7 +61,7 @@ const Dashboard = () => {
                     <tbody>
                         {
                             shops.map((shop) => {
-                                return <ApplicationData key={shop._id} id={shops.indexOf(shop)} shop={shop} />
+                                return <ApplicationData key={shop._id} id={shops.indexOf(shop) + 1} shop={shop} />
                             })
                         }
                     </tbody>

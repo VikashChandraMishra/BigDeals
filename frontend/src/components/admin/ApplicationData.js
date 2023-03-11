@@ -41,8 +41,8 @@ const ApplicationData = (props) => {
             <td>{personName}</td>
             <td>{signature ? 'Yes' : 'No'}</td>
             <td>
-                <button className="mr-2 text-xs md:text-base w-20 md:w-32 my-5 py-2 bg-blue-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={editShop} >Edit</button>
-                <button className="mr-2 text-xs md:text-base w-20 md:w-32 my-5 py-2 bg-red-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={deleteShop} >Delete</button>
+                <button className="mr-2 text-xs md:text-base w-8 md:w-16 my-5 py-2 bg-blue-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={editShop} >Edit</button>
+                <button className="mr-2 text-xs md:text-base w-8 md:w-16 my-5 py-2 bg-red-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg" onClick={deleteShop} >Delete</button>
             </td>
         </tr>
     )
